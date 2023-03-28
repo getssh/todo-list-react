@@ -5,6 +5,18 @@ import { AiFillEdit } from 'react-icons/ai';
 import InputToDo from './InputTodo';
 
 const TodoLists = () => {
+  const initialTodos = () => {
+    const getTodos = JSON.parse(localStorage.getItem('todos'));
+    return getTodos || [];
+  };
+
+  const [todos, setTodos] = useState(initialTodos());
+  const [editing, setEditing] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
   return (
     <>
       <InputTask addTodoItem={addTodoItem} />
