@@ -17,6 +17,55 @@ const TodoLists = () => {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
+  const handleChange = (id) => {
+    setTodos((prev) => prev.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          completed: !todo.completed,
+        };
+      }
+      return todo;
+    }));
+  };
+
+  const handleEditing = () => {
+    setEditing(todos);
+  };
+
+
+  const deleteTodo = (id) => {
+    setTodos([
+      ...todos.filter((todo) => todo.id !== id),
+    ]);
+  };
+
+  const addTodoItem = (title) => {
+    const newTodo = {
+      id: uuidv4(),
+      title,
+      completed: false,
+    };
+    setTodos([...todos, newTodo]);
+  };
+
+  const setUpdate = (updatedTitle, id) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          todo.title = updatedTitle;
+        }
+        return todo;
+      }),
+    );
+  };
+
+  const handleUpdate = (e) => {
+    if (e.key === 'Enter') {
+      setEditing(false);
+    }
+  };
+
   return (
     <>
       <InputTask addTodoItem={addTodoItem} />
