@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FaPlusCircle } from 'react-icons/fa';
 
 /* eslint-disable react/prop-types */
-const InputTask = ({ addTodoItem }) => {
+const InputToDo = ({ addTodoItem }) => {
   const [task, setTask] = useState('');
   const [message, setMessage] = useState('');
   const handleChange = (e) => {
@@ -33,4 +33,4 @@ const InputTask = ({ addTodoItem }) => {
   );
 };
 
-export default InputTask;
+export default InputToDo;
