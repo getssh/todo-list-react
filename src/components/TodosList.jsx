@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { FaTrash } from 'react-icons/fa';
 import { AiFillEdit } from 'react-icons/ai';
 import InputToDo from './InputTodo';
+import '../index.css';
 
 const TodoLists = () => {
   const initialTodos = () => {
